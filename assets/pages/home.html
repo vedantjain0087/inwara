@@ -1,0 +1,75 @@
+    
+    <div ng-include="'assets/pages/common/left-sidebar.html'"></div>
+    <div ng-include="'assets/pages/common/navbar.html'"></div>
+
+    <div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<h3 class="page-title">Welcome to CoinCap</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<!-- PANEL HEADLINE -->
+							<div class="panel panel-headline">
+									
+								<div class="panel-body">
+										<div class="input-group col-md-4" style="float:right">
+												<input class="form-control" ng-model="search" type="text">
+												<span class="input-group-btn"><button class="btn btn-primary" type="button">Search</button></span>
+											</div>
+											<dir-pagination-controls 
+											max-size="5"
+											direction-links="true"
+											boundary-links="true"
+											></dir-pagination-controls>
+									<table class="table table-striped">
+											<thead>
+		<tr>
+				<th>#
+				</th>
+				<th ng-click="sort('long')">Name
+					<span class="glyphicon sort-icon" ng-show="sortKey=='long'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th ng-click="sort('mktcap')">Market Cap
+					<span class="glyphicon sort-icon" ng-show="sortKey=='mktcap'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th ng-click="sort('price')">Price
+					<span class="glyphicon sort-icon" ng-show="sortKey=='price'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th ng-click="sort('vwapData')">24 hr VWAP
+						<span class="glyphicon sort-icon" ng-show="sortKey=='vwapData'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+					</th>
+				<th ng-click="sort('supply')">Available Supply
+							<span class="glyphicon sort-icon" ng-show="sortKey=='supply'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+				<th ng-click="sort('volume')">24 hr Volume
+								<span class="glyphicon sort-icon" ng-show="sortKey=='volume'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+				<th ng-click="sort('perc')">Percentage
+									<span class="glyphicon sort-icon" ng-show="sortKey=='perc'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+			</tr>
+											</thead>
+											<tbody>
+												<tr dir-paginate="(key, data) in dataset |itemsPerPage:10| filter:search|orderBy:sortKey:reverse">
+													<td>{{key}}</td>
+													<td>{{data.long}} ({{data.short}})</td>
+													<td>{{data.mktcap}}</td>
+													<td>{{data.price}}</td>
+													<td>{{data.vwapData}}</td>
+													<td>{{data.supply}}</td>
+													<td>{{data.volume}}</td>
+													<td>{{data.perc}}</td>
+
+												</tr>
+											</tbody>
+										</table>
+								</div>
+							</div>
+							<!-- END PANEL HEADLINE -->
+
+                    </div>
+                </div>
+            </div>
+		</div>
+		
